@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adzra Haura Ramadhani — Portofolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#12234A;
+    --navy-2:#1F3A73;
+    --coral:#FF6B4A;
+    --coral-dim:#FFE3DA;
+    --bg:#F5F7FB;
+    --card:#FFFFFF;
+    --line:#E1E6F0;
+    --ink:#1C2333;
+    --muted:#5C6479;
+    --mono:'JetBrains Mono', monospace;
+    --disp:'Space Grotesk', sans-serif;
+    --body:'Inter', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--coral); color:#fff;}
+
+  .wrap{max-width:980px; margin:0 auto; padding:0 28px;}
+
+  /* Ticket-stub texture used as a signature motif */
+  .stub-edge{
+    position:relative;
+  }
+  .stub-edge::before{
+    content:"";
+    position:absolute; left:0; right:0; top:-1px; height:1px;
+    background-image:radial-gradient(circle, var(--bg) 3px, transparent 3.5px);
+    background-size:16px 16px;
+    background-position:0 -8px;
+  }
+
+  /* ---------- HEADER / TICKET ---------- */
+  header{
+    padding:56px 0 40px;
+    border-bottom:1px dashed var(--line);
+  }
+  .ticket{
+    background:var(--navy);
+    color:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 20px 40px -20px rgba(18,35,74,0.45);
+  }
+  .ticket-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:24px;
+    padding:38px 40px 30px;
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--coral);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px; height:7px; border-radius:50%;
+    background:var(--coral);
+    box-shadow:0 0 0 4px rgba(255,107,74,0.25);
+  }
+  h1{
+    font-family:var(--disp);
+    font-weight:700;
+    font-size:clamp(34px, 5.2vw, 54px);
+    line-height:1.04;
+    letter-spacing:-0.01em;
+  }
+  .role{
+    font-family:var(--mono);
+    font-size:14px;
+    color:#B9C4E0;
+    margin-top:14px;
+    letter-spacing:0.02em;
+  }
+  .status-pill{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    background:rgba(255,107,74,0.15);
+    border:1px solid rgba(255,107,74,0.5);
+    color:#FFB49E;
+    padding:7px 14px;
+    border-radius:100px;
+    white-space:nowrap;
+  }
+  .ticket-perf{
+    height:0;
+    border-top:2px dashed rgba(255,255,255,0.18);
+    margin:0 40px;
+    position:relative;
+  }
+  .ticket-perf::before, .ticket-perf::after{
+    content:"";
+    position:absolute; top:-11px;
+    width:22px; height:22px; border-radius:50%;
+    background:var(--bg);
+  }
+  .ticket-perf::before{ left:-51px; }
+  .ticket-perf::after{ right:-51px; }
+  .ticket-bottom{
+    display:flex;
+    flex-wrap:wrap;
+    gap:26px;
+    padding:26px 40px 34px;
+    font-family:var(--mono);
+    font-size:13px;
+    color:#DCE3F5;
+  }
+  .ticket-bottom div{display:flex; align-items:center; gap:9px;}
+  .ticket-bottom span.k{color:#7C8AB8;}
+
+  /* ---------- SECTION SCAFFOLDING ---------- */
+  section{padding:56px 0;}
+  section + section{border-top:1px dashed var(--line);}
+  .sec-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:28px;
+  }
+  .sec-tag{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--coral);
+    background:var(--coral-dim);
+    padding:4px 10px;
+    border-radius:6px;
+    letter-spacing:0.04em;
+  }
+  .sec-title{
+    font-family:var(--disp);
+    font-weight:600;
+    font-size:26px;
+    letter-spacing:-0.01em;
+  }
+
+  /* About */
+  .about-text{
+    font-size:17px;
+    color:var(--muted);
+    max-width:640px;
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:40px;
+    align-items:start;
+  }
+  .quick-facts{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:22px 24px;
+  }
+  .quick-facts .row{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  .quick-facts .row:last-child{border-bottom:none;}
+  .quick-facts .row span:first-child{
+    font-family:var(--mono);
+    color:var(--muted);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+  .quick-facts .row span:last-child{font-weight:600; text-align:right;}
+
+  /* Experience card (ticket motif continues) */
+  .exp-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:30px 32px;
+  }
+  .exp-head{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px 20px;
+    margin-bottom:6px;
+  }
+  .exp-role{font-family:var(--disp); font-weight:600; font-size:19px;}
+  .exp-period{font-family:var(--mono); font-size:12px; color:var(--muted); white-space:nowrap; padding-top:4px;}
+  .exp-org{color:var(--navy-2); font-weight:600; font-size:14px; margin-bottom:18px;}
+  .exp-list{list-style:none; display:grid; gap:11px;}
+  .exp-list li{
+    position:relative;
+    padding-left:22px;
+    font-size:14.5px;
+    color:var(--ink);
+  }
+  .exp-list li::before{
+    content:"›";
+    position:absolute; left:0; top:0;
+    color:var(--coral);
+    font-weight:700;
+    font-family:var(--mono);
+  }
+
+  /* Projects grid */
+  .proj-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:16px;
+  }
+  .proj-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:22px 20px;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .proj-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 30px -18px rgba(18,35,74,0.35);
+    border-color:var(--navy-2);
+  }
+  .proj-num{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--coral);
+    letter-spacing:0.06em;
+  }
+  .proj-name{
+    font-family:var(--disp);
+    font-weight:600;
+    font-size:17px;
+    margin:10px 0 8px;
+  }
+  .proj-desc{font-size:13.5px; color:var(--muted); line-height:1.5;}
+
+  /* Skills */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:14px 30px;
+  }
+  .skill-item{
+    display:flex;
+    gap:16px;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .skill-mark{
+    font-family:var(--mono);
+    font-size:12px;
+    color:#fff;
+    background:var(--navy-2);
+    width:30px; height:30px;
+    border-radius:8px;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .skill-name{font-weight:600; font-size:14.5px; margin-bottom:3px;}
+  .skill-desc{font-size:13px; color:var(--muted);}
+
+  /* Tags / tools */
+  .tag-row{display:flex; flex-wrap:wrap; gap:10px;}
+  .tag{
+    font-family:var(--mono);
+    font-size:12.5px;
+    background:#fff;
+    border:1px solid var(--line);
+    padding:8px 14px;
+    border-radius:100px;
+    color:var(--navy-2);
+  }
+
+  /* Soft skills */
+  .soft-row{display:flex; flex-wrap:wrap; gap:12px;}
+  .soft-pill{
+    background:var(--navy);
+    color:#fff;
+    font-size:13.5px;
+    padding:10px 18px;
+    border-radius:10px;
+    font-weight:500;
+  }
+
+  /* Two column: achievements / education */
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .info-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:26px 28px;
+  }
+  .info-card h3{
+    font-family:var(--disp);
+    font-size:15px;
+    margin-bottom:16px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .info-card h3::before{content:"◆"; color:var(--coral); font-size:11px;}
+  .info-row{
+    display:flex; justify-content:space-between; gap:10px;
+    font-size:14px; padding:9px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .info-row:last-child{border-bottom:none;}
+  .info-row .label{color:var(--ink); font-weight:500;}
+  .info-row .val{color:var(--muted); font-family:var(--mono); font-size:12.5px; text-align:right;}
+
+  /* Org / leadership timeline */
+  .lead-list{list-style:none; display:grid; gap:14px;}
+  .lead-list li{
+    display:flex; gap:14px;
+    font-size:14.5px;
+    align-items:flex-start;
+  }
+  .lead-list li::before{
+    content:"";
+    width:6px; height:6px; margin-top:7px;
+    border-radius:50%;
+    background:var(--coral);
+    flex-shrink:0;
+  }
+
+  /* Target roles footer */
+  footer{
+    padding:50px 0 70px;
+  }
+  .target-box{
+    background:var(--navy);
+    color:#fff;
+    border-radius:18px;
+    padding:38px 40px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:24px;
+    align-items:center;
+  }
+  .target-box .lbl{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--coral);
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .target-box h2{
+    font-family:var(--disp);
+    font-size:24px;
+    font-weight:600;
+    max-width:420px;
+  }
+  .target-roles{display:flex; flex-wrap:wrap; gap:10px; max-width:420px;}
+  .target-roles span{
+    font-family:var(--mono);
+    font-size:12.5px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.18);
+    padding:8px 14px;
+    border-radius:100px;
+  }
+  .contact-cta{
+    font-size:13px;
+    color:#8592b8;
+    text-align:center;
+    margin-top:28px;
+    font-family:var(--mono);
+  }
+
+  @media (max-width:760px){
+    .wrap{padding:0 18px;}
+    .ticket-top{flex-direction:column; padding:30px 24px 24px;}
+    .ticket-perf{margin:0 24px;}
+    .ticket-perf::before{left:-33px;}
+    .ticket-perf::after{right:-33px;}
+    .ticket-bottom{padding:22px 24px 28px; flex-direction:column; gap:12px;}
+    .about-grid{grid-template-columns:1fr;}
+    .proj-grid{grid-template-columns:repeat(2,1fr);}
+    .skills-grid{grid-template-columns:1fr;}
+    .two-col{grid-template-columns:1fr;}
+    .target-box{flex-direction:column; align-items:flex-start;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="ticket">
+      <div class="ticket-top">
+        <div>
+          <div class="eyebrow">Ticket #RPL-2027 · Status Aktif</div>
+          <h1>Adzra Haura<br>Ramadhani</h1>
+          <div class="role">Rekayasa Perangkat Lunak — Administrasi &amp; IT</div>
+        </div>
+        <div class="status-pill">Siap Kerja / PKL</div>
+      </div>
+      <div class="ticket-perf"></div>
+      <div class="ticket-bottom">
+        <div><span class="k">Lokasi</span> Cipatat, Bandung Barat</div>
+        <div><span class="k">Telepon</span> 0831-3718-8146</div>
+        <div><span class="k">Email</span> adzrahaura272@gmail.com</div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="sec-head">
+      <span class="sec-tag">01</span>
+      <span class="sec-title">Tentang Saya</span>
+    </div>
+    <div class="about-grid">
+      <p class="about-text">Siswi jurusan Rekayasa Perangkat Lunak yang memiliki minat di bidang administrasi dan teknologi informasi. Berpengalaman dalam pengelolaan data administrasi, keuangan, serta mendukung operasional tim. Memiliki dasar pengembangan website dan desain, serta cepat beradaptasi dan belajar hal baru.</p>
+      <div class="quick-facts">
+        <div class="row"><span>Sekolah</span><span>SMKN 4 Padalarang</span></div>
+        <div class="row"><span>Jurusan</span><span>Rekayasa Perangkat Lunak</span></div>
+        <div class="row"><span>Periode</span><span>2024 — 2027</span></div>
+        <div class="row"><span>Fokus</span><span>Admin, Data, IT Dasar</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head">
+      <span class="sec-tag">02</span>
+      <span class="sec-title">Pengalaman</span>
+    </div>
+    <div class="exp-card">
+      <div class="exp-head">
+        <span class="exp-role">Administrasi Finance — Praktik Kerja Lapangan (PKL)</span>
+        <span class="exp-period">MEI 2026 — AGUSTUS 2026</span>
+      </div>
+      <div class="exp-org">PT Maxximum Digital Indonesia</div>
+      <ul class="exp-list">
+        <li>Melakukan input, pengolahan, dan rekapitulasi data administrasi.</li>
+        <li>Menghitung reimburse, penggajian, profit, dan kebutuhan operasional.</li>
+        <li>Membuat invoice, dokumen penawaran, dan BASTP.</li>
+        <li>Mengelola pembayaran email, server, dan operasional bulanan.</li>
+        <li>Membuat notulen dan mencatat hasil meeting.</li>
+        <li>Membantu pembuatan konten tim: feed, carousel, dan voice over.</li>
+        <li>Mendukung pekerjaan tim melalui website ticketing dan sistem digital perusahaan.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head">
+      <span class="sec-tag">03</span>
+      <span class="sec-title">Proyek RPL</span>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-num">PROJECT / 01</div>
+        <div class="proj-name">Website</div>
+        <div class="proj-desc">Membangun website menggunakan HTML, JavaScript, dan PHP.</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">PROJECT / 02</div>
+        <div class="proj-name">Database</div>
+        <div class="proj-desc">Merancang proyek basis data untuk kebutuhan pembelajaran.</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">PROJECT / 03</div>
+        <div class="proj-name">Mobile</div>
+        <div class="proj-desc">Mengerjakan proyek aplikasi mobile.</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">PROJECT / 04</div>
+        <div class="proj-name">Game</div>
+        <div class="proj-desc">Mengembangkan proyek game sebagai bagian dari pembelajaran RPL.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head">
+      <span class="sec-tag">04</span>
+      <span class="sec-title">Keahlian</span>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <div class="skill-mark">Ad</div>
+        <div>
+          <div class="skill-name">Administrasi</div>
+          <div class="skill-desc">Input data, rekapitulasi, pengarsipan dokumen</div>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-mark">Of</div>
+        <div>
+          <div class="skill-name">Microsoft Office</div>
+          <div class="skill-desc">Word, Excel, PowerPoint</div>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-mark">De</div>
+        <div>
+          <div class="skill-name">Desain</div>
+          <div class="skill-desc">Canva, Figma (dasar)</div>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-mark">&lt;/&gt;</div>
+        <div>
+          <div class="skill-name">IT Dasar</div>
+          <div class="skill-desc">HTML, JavaScript, PHP, Database</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:36px"></div>
+    <div class="tag-row">
+      <span class="tag">Microsoft Excel</span>
+      <span class="tag">Microsoft Word</span>
+      <span class="tag">Microsoft PowerPoint</span>
+      <span class="tag">Canva</span>
+      <span class="tag">Figma</span>
+      <span class="tag">Aplikasi Absensi Digital</span>
+      <span class="tag">Website Ticketing</span>
+      <span class="tag">Website SPPD</span>
+    </div>
+
+    <div style="height:30px"></div>
+    <div class="soft-row">
+      <span class="soft-pill">Komunikasi &amp; public speaking</span>
+      <span class="soft-pill">Kerja sama tim</span>
+      <span class="soft-pill">Manajemen waktu</span>
+      <span class="soft-pill">Berpikir kritis &amp; teliti</span>
+      <span class="soft-pill">Cepat belajar &amp; beradaptasi</span>
+    </div>
+  </section>
+
+  <section id="records">
+    <div class="sec-head">
+      <span class="sec-tag">05</span>
+      <span class="sec-title">Prestasi &amp; Pendidikan</span>
+    </div>
+    <div class="two-col">
+      <div class="info-card">
+        <h3>Prestasi</h3>
+        <div class="info-row"><span class="label">Peringkat 2 Kelas</span><span class="val">KELAS 10 · SMT 1 &amp; 2</span></div>
+        <div class="info-row"><span class="label">Peringkat 3 Kelas</span><span class="val">KELAS 11 · SMT 1 &amp; 2</span></div>
+      </div>
+      <div class="info-card">
+        <h3>Pendidikan</h3>
+        <div class="info-row"><span class="label">SMKN 4 Padalarang</span><span class="val">2024 — 2027</span></div>
+        <div class="info-row"><span class="label">Rekayasa Perangkat Lunak</span><span class="val">JURUSAN</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="org">
+    <div class="sec-head">
+      <span class="sec-tag">06</span>
+      <span class="sec-title">Organisasi &amp; Kepemimpinan</span>
+    </div>
+    <div class="two-col">
+      <div class="info-card">
+        <h3>Organisasi</h3>
+        <ul class="lead-list">
+          <li>OSIS SMP — anggota OSIS</li>
+          <li>Ekstrakurikuler — Seni Tari dan Duta Pustaka</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>Kegiatan &amp; Kepemimpinan</h3>
+        <ul class="lead-list">
+          <li>Ketua kelas dan ketua kelompok dalam berbagai tugas</li>
+          <li>Memimpin beberapa kegiatan/event, termasuk bazar dan kegiatan karang taruna</li>
+          <li>Terbiasa membagi tugas dan mengoordinasikan anggota tim</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="target-box">
+      <div>
+        <div class="lbl">Target Posisi</div>
+        <h2>Terbuka untuk peran administrasi, data, dan IT junior.</h2>
+      </div>
+      <div class="target-roles">
+        <span>Administrasi</span>
+        <span>Admin Finance</span>
+        <span>Data Entry</span>
+        <span>Staff Office</span>
+        <span>Staff IT</span>
+        <span>Web Developer Junior</span>
+        <span>UI/UX Junior</span>
+      </div>
+    </div>
+    <div class="contact-cta">adzrahaura272@gmail.com · 0831-3718-8146 · Cipatat, Bandung Barat</div>
+  </footer>
+</div>
+
+</body>
+</html>
